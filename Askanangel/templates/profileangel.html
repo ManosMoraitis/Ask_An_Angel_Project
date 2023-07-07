@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background: rgb(99, 39, 120)
+        }
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #BA68C8
+        }
+
+        .profile-button {
+            background: rgb(99, 39, 120);
+            box-shadow: none;
+            border: none
+        }
+
+        .profile-button:hover {
+            background: #682773
+        }
+
+        .profile-button:focus {
+            background: #682773;
+            box-shadow: none
+        }
+
+        .profile-button:active {
+            background: #682773;
+            box-shadow: none
+        }
+
+        .back:hover {
+            color: #682773;
+            cursor: pointer
+        }
+
+        .labels {
+            font-size: 11px
+        }
+
+        .add-experience:hover {
+            background: #BA68C8;
+            color: #fff;
+            cursor: pointer;
+            border: solid 1px #BA68C8
+        }
+    </style>
+    <link rel="icon" href="../static/angel.ico" type="image/x-icon">
+
+</head>
+
+<body class="bg-image" style="background-image: url(../static/angelback.jpeg);">
+    <nav class="navbar navbar-expand-lg navbar-dark " style="background-color: #363753;width: 100%; height: 100%; ">
+        <div class="container">
+            <a class="navbar-brand" style="color:#5cd2c6;" href="/home"><img src="../static/angel.png" width="30" height="35">Home</a>
+            <button style="color:#5cd2c6;" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:#5cd2c6;" href="#">Profile</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:#5cd2c6;" href="/messages">Messages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:#5cd2c6;" href="#">Notifications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:#5cd2c6;" href="/transactions">Transactions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" style="color:#ef316d;" href="/logout">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container rounded mt-5 mb-5" style="background-color: #dfe3ee;">
+        <div class="row">
+            <div class="col-md-3 border-right">
+                <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5"
+                        width="150px"
+                        src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"><span
+                        class="font-weight-bold">{{session['firstname']}}</span><span
+                        class="text-black-50">{{session['email']}}</span><br><span
+                        class="text-black-50"><i>"{{session['bio']}}"</i></span><span> </span></div>
+            </div>
+            <div class="col-md-5 border-right">
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h4 class="text-right">Profile Settings</h4>
+                    </div>
+                    <form method="POST" action="/profileangel">
+                        <div class="row mt-2">
+                            <div class="col-md-6"><label class="labels">Name</label><input name="firstname" type="text"
+                                    class="form-control" placeholder="first name" value="{{ session['firstname'] }}">
+                            </div>
+                            <div class="col-md-6"><label class="labels">Surname</label><input name="lastname"
+                                    type="text" class="form-control" value="{{ session['lastname'] }}"
+                                    placeholder="surname"></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-12"><label class="labels">Username</label><input disabled type="text"
+                                    class="form-control" placeholder="enter username" value="{{username}}"></div>
+                            <div class="col-md-12"><label class="labels">Email ID</label><input name="email" type="text"
+                                    class="form-control" placeholder="enter email id" value="{{ session['email'] }}">
+                            </div>
+                            <div class="col-md-12"><label class="labels">Bio</label><textarea name="bio" type="text"
+                                    class="form-control" placeholder="Enter your bio"
+                                    value="">{{ session['bio'] }}</textarea></div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-md-6"><label class="labels">Country</label><input type="text" name="country"
+                                    class="form-control" placeholder="country" value="{{ session['country'] }}"></div>
+                            <div class="col-md-6"><label class="labels">City</label><input type="text" name="city"
+                                    class="form-control" value="{{ session['city'] }}" placeholder="city"></div>
+                        </div>
+                        <div class="mt-5 text-center"><button class="btn btn-primary profile-button btn-circle"
+                                type="submit" style="background-color: #5cd2c6;">Save Profile</button></div>
+                    </form>
+                    <div class="p-3 py-5 ">
+                        <div class="d-flex justify-content-between align-items-center experience "><span>Request Certification
+                                </span><span class="border px-3 p-1 add-experience"><i
+                                    class="fa fa-plus"></i>&nbsp;Certification</span></div>
+                        <div class="border border-primary rounded border-1 p-3">
+                            <form class=" "  >
+                                <div class="input-group mb-3">
+                                    <label for="formFile" class="form-label"></label>
+                                    <input class="form-control" type="file" id="formFile">
+                                </div>
+                                <center><button class="btn btn-primary profile-button btn-circle" type="submit"
+                                        style="background-color: #5cd2c6;">Send Request!</button></center>
+                            </form>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-3 py-5 ">
+                    <div class="d-flex justify-content-between align-items-center experience "><span>Edit
+                            Hashtags</span><span class="border px-3 p-1 add-experience"><i
+                                class="fa fa-plus"></i>&nbsp;Hashtags</span></div>
+                    <div class="border border-primary rounded border-1 p-3">
+                        <form class=" " method="POST" action="/addhashtag">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text" id="basic-addon1">#</span>
+                                <input type="text" name="hashtag" class="form-control" placeholder="Hashtag"
+                                    aria-label="Hashtag" aria-describedby="basic-addon1">
+                            </div>
+                            <center><button class="btn btn-primary profile-button btn-circle" type="submit"
+                                    style="background-color: #5cd2c6;">Add Hashtag</button></center>
+                        </form>
+                        <br>
+                        <form class=" " method="POST" action="/removehashtag">
+                            <select class="form-select" aria-label="Default select example">
+                                {% for hashtag in hashtags %}
+                                <option>{{ hashtag[0] }}</option>
+                                {% endfor %}
+                            </select><br>
+                            <center><button class="btn btn-primary profile-button btn-circle" type="submit"
+                                    style="background-color: #5cd2c6;">Remove Hashtag</button></center>
+                        </form>
+                    </div>
+                </div>
+                <div class="p-3 py-5">
+                    <div class="d-flex justify-content-between align-items-center experience"><span>Edit
+                            Services</span><span class="border px-3 p-1 add-experience"><i
+                                class="fa fa-plus"></i>&nbsp;Services</span></div>
+                    <div class="border border-primary rounded border-1 p-3">
+                        <form method="POST" action="/addservice">
+                            <div class="col-md-12"><label class="labels">Service</label><textarea name="service"
+                                    type="text" class="form-control" placeholder="Enter your Service"
+                                    value=""></textarea></div>
+                            <div class="col-md-12"><label class="labels">Price</label><input type="text" name="price"
+                                    class="form-control" placeholder="Price" value=""></div>
+                            <center><button class="btn btn-primary profile-button btn-circle" type="submit"
+                                    style="background-color: #5cd2c6;">Add Service</button></center><br>
+                        </form>
+                        <form class=" " method="POST" action="/removeservice">
+                            <select class="form-select" aria-label="Default select example">
+
+                                {% for service in services %}
+                                <option>{{ service[0] }}</option>
+                                {% endfor %}
+                            </select><br>
+                            <center><button class="btn btn-primary profile-button btn-circle" type="submit"
+                                    style="background-color: #5cd2c6;">Remove Service</button></center>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+    </div>
+    <footer class="text-center text-white fixed-bottom bg-dark">
+        <!-- Grid container -->
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2023 Copyright:
+            <a class="text-white" href="#">AskAnAngel</a>
+        </div>
+        <!-- Copyright -->
+    </footer>
+</body>

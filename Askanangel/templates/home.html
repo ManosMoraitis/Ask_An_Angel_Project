@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="icon" href="../static/angel.ico" type="image/x-icon">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body class="">
+    <div class="bg-image" style="background-image: url(../static/angelback.jpeg); height: 100vh;">
+        <div class="mask" style="background-color: rgba(105, 102, 102, 0.6)">
+
+            <nav class="navbar navbar-expand-lg navbar-dark "
+                style="background-color: #363753;width: 100%; height: 100%; ">
+                <div class="container">
+                    <a class="navbar-brand" style="color:#5cd2c6;" href="/home"><img src="../static/angel.png"
+                            width="30" height="35">Home</a>
+                    <button style="color:#5cd2c6;" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            {% if session['type'] == 1 %}
+                            <li class="nav-item">
+                                <a class="nav-link" style="color:#5cd2c6;" href="/profile">Profile</a>
+                            </li>
+                            {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" style="color:#5cd2c6;" href="/profileangel">Profile</a>
+                            </li>
+                            {% endif %}
+                            <li class="nav-item">
+                                <a class="nav-link" style="color:#5cd2c6;" href="/messages">Messages</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color:#5cd2c6;" href="#">Notifications</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color:#5cd2c6;" href="/transactions">Transactions</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" style="color:#ef316d;" href="/logout">Logout</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-8" style="font-family: 'Trebuchet MS', sans-serif; color:#5cd2c6;">
+                        <h1>Unlock the wisdom of experience.</h1> <br>
+                        <h4>Where curiosity meets guidance. Tap into the knowledge of those who've been there, and
+                            navigate life's ventures with Ask an Angel.</h4>
+                    </div>
+                </div><br>
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <h1 class="text-center mb-4" style="font-family: 'Trebuchet MS', sans-serif;">Search For An
+                            Angel</h1>
+                        <form method="POST" action="/search">
+                            <div class="input-group">
+
+                                <input type="text" name="searchterm" class="form-control"
+                                    placeholder="Search for hashtag..." aria-label="Search" value="{{ searchKeyword }}">
+                                <button class="btn btn-primary" type="submit"
+                                    style="background-color: #5cd2c6; border-color: #5cd2c6;">Go</button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div><br>
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <h5 style="font-family: 'Trebuchet MS', sans-serif;"> Angels that match your searchterm: </h4>
+                        <div class="list-group list-group-item-primary">
+
+
+                            {% for result in results %}
+                            <a href="/viewprofile?user={{ result[1] }}" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h5 class="mb-1">{{ result[4] }} {{ result[5] }}</h5>
+                                </div>
+                                <p class="mb-1">@{{ result[1] }}</p>
+                                <small class="text-muted"><i>"{{ result[6] }}"</i></small>
+                            </a>
+                            {% endfor %}
+                        </div>
+                </div>
+            </div>
+            <footer class="text-center text-white fixed-bottom bg-dark">
+                <!-- Grid container -->
+
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                    © 2023 Copyright:
+                    <a class="text-white" href="#">AskAnAngel</a>
+                </div>
+                <!-- Copyright -->
+            </footer>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

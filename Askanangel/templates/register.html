@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        body {
+            background-color: #dfe3ee;
+        }
+        .login-box {
+            background-color: #363753;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <link rel="icon" href="../static/angel.ico" type="image/x-icon">
+
+</head>
+<body class="bg-image" style="background-image: url(../static/angelback.jpeg);">
+    <div class="container mt-5">
+        
+        <div class="row justify-content-center login-box">
+            <div class="col">
+                <img src="../static/angel.png" class="rounded mx-auto d-block"> 
+                </div>
+            <div class="col-md-6">
+                
+                <div class="">
+                    <h1 class="text-center mb-4" style="color:#5cd2c6">Let Us Help You</h1>
+                    <form method="POST" action="/register">
+                        <div class="mb-3">
+                            <label for="username" class="form-label"style="color: #5cd2c6;">Username</label>
+                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter username" style="background-color:#fefefe";>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label"style="color: #5cd2c6;">Password</label>
+                            <input type="password" class="form-control" id="password" name="password" placeholder="Password" style="background-color:#fefefe">
+                        </div>
+                        <div class="mb-3">
+                            <label for="FirstName" class="form-label"style="color: #5cd2c6;">First Name</label>
+                            <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="Enter First Name" style="background-color:#fefefe";>
+                        </div>
+                        <div class="mb-3">
+                            <label for="LastName" class="form-label"style="color: #5cd2c6;">Last Name</label>
+                            <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Enter Last Name" style="background-color:#fefefe";>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label"style="color: #5cd2c6;">E-Mail Address</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="Enter E-Mail Address" style="background-color:#fefefe";>
+                        </div>
+                        <div class="mb-3">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" name="account_type" value="angel" type="checkbox" id="flexSwitchCheckDefault">
+                            <label class="form-check-label" style="color:#5cd2c6" for="flexSwitchCheckDefault">Register As an Angel</label>
+                          </div>
+                        </div>
+                        <center><button type="submit" class="btn btn-primary btn-block "style="background-color:#5cd2c6; color:#363753;border-color: #5cd2c6;">Register</button></center>
+                        <br><br>
+                        <div class="mb-3"> 
+                            <center><a href="/" style="color: #5cd2c6;">Login</a></center>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>
